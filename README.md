@@ -36,6 +36,10 @@ The schema repo gets configured via a .properties file passed as the first comma
     # FQCN of the validators to use. You can specify zero, one or more than one implementation, all of which need to be prefixed with 'schema-repo.validator.' : 
     schema-repo.validator.my_custom_validator_1=com.xyz.Validator1
     schema-repo.validator.my_custom_validator_2=com.xyz.Validator2
+    schema-repo.validator.my_custom_validator_3=com.xyz.Validator3
+     
+    # Default validators to apply to all new topics where no validators are explicitly specified. Comma-separated list of Validator names (without the 'schema-repo.validator.' prefix).
+    schema-repo.validation.default.validators=my_custom_validator_1,my_custom_validator_2
 
 All configuration properties are injected via Guice. However, you are not obligated to use Guice if you do not wish to. You can also feed the required properties to the various constructors directly by code, if you wish to wire in your own config management solution.
     
@@ -81,7 +85,6 @@ The schema repo's REST server implementation uses Jetty. The defaults below will
     # Jetty configs and their defaults:
     schema-repo.jetty.host=
     schema-repo.jetty.port=2876
-    schema-repo.jetty.path=/schema-repo
     schema-repo.jetty.header.size=16384
     schema-repo.jetty.buffer.size=16384
     schema-repo.jetty.stop-at-shutdown=true
@@ -95,7 +98,7 @@ The REST endpoints supported by the Schema Repo, their descriptions, as well as 
 
 Here are some interesting resources to get a better understanding of the Schema Repo's motivation and related technologies:
 * [High Volume Data and Schema Evolution](https://prezi.com/dynn9skazbty/high-volume-data-and-schema-evolution/), by Scott Carey.
-* [Schema evolution in Avro, Protocol Buffers and Thrift](http://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html), by Martin Klepman.
+* [Schema evolution in Avro, Protocol Buffers and Thrift](http://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html), by Martin Kleppmann.
 * The original [AVRO-1124](https://issues.apache.org/jira/browse/AVRO-1124) ticket, by Jay Kreps.
 
 ## Origin Story

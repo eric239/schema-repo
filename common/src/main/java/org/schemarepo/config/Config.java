@@ -33,11 +33,15 @@ public class Config {
   public static final String REPO_CACHE = GLOBAL_PREFIX + "cache";
   public static final String VALIDATOR_PREFIX = GLOBAL_PREFIX + "validator.";
 
+  // Validation class related configs
+  public static final String VALIDATION_PREFIX = GLOBAL_PREFIX + "validation.";
+  // The default list of validator names (not including prefix) to use for validating subjects.
+  public static final String DEFAULT_SUBJECT_VALIDATORS = VALIDATION_PREFIX + "default.validators";
+
   // Jetty configs
   private static final String JETTY_PREFIX = GLOBAL_PREFIX + "jetty.";
   public static final String JETTY_HOST = JETTY_PREFIX + "host";
   public static final String JETTY_PORT = JETTY_PREFIX + "port";
-  public static final String JETTY_PATH = JETTY_PREFIX + "path";
   public static final String JETTY_HEADER_SIZE = JETTY_PREFIX + "header.size";
   public static final String JETTY_BUFFER_SIZE = JETTY_PREFIX + "buffer.size";
   public static final String JETTY_STOP_AT_SHUTDOWN = JETTY_PREFIX + "stop-at-shutdown";
@@ -79,11 +83,12 @@ public class Config {
     // Jetty defaults
     DEFAULTS.setProperty(JETTY_HOST, "");
     DEFAULTS.setProperty(JETTY_PORT, "2876"); // 'AVRO' on a t-9 keypad
-    DEFAULTS.setProperty(JETTY_PATH, "/schema-repo");
     DEFAULTS.setProperty(JETTY_HEADER_SIZE, "16384");
     DEFAULTS.setProperty(JETTY_BUFFER_SIZE, "16384");
     DEFAULTS.setProperty(JETTY_STOP_AT_SHUTDOWN, "true");
     DEFAULTS.setProperty(JETTY_GRACEFUL_SHUTDOWN, "3000");
+
+    DEFAULTS.setProperty(DEFAULT_SUBJECT_VALIDATORS,"");
 
     // Logging defaults
     DEFAULTS.setProperty(LOGGING_ROUTE_JUL_TO_SLF4J, "true");
